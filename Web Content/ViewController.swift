@@ -12,7 +12,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let url = NSURL(string: "http://gerardocamilo.wordpress.com")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!){
+            (data, response, error) in
+            
+            var decodedData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            
+            println(decodedData)
+        }
+        
+        task.resume()
     }
 
     override func didReceiveMemoryWarning() {
